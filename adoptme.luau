@@ -433,6 +433,26 @@ PetsTab:Button({
 		end
 	end,
 })
+PetsTab:Button({
+	Text = "Spawn high tier pets - NFR",
+	Callback = function(self)
+		for _,namepet in pairs(petstbl) do
+			for i = 1,math.random(1,2) do
+				createPet(namepet,true,true,true,false,true)
+			end
+		end
+	end,
+})
+PetsTab:Button({
+	Text = "Spawn high tier pets - MFR",
+	Callback = function(self)
+		for _,namepet in pairs(petstbl) do
+			for i = 1,math.random(1,2) do
+				createPet(namepet,true,true,false,true,true)
+			end
+		end
+	end,
+})
 --[[
 PetsTab:Button({
 	Text = "Spawn stacks high tier pets",
