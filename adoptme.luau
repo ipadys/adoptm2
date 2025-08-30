@@ -190,6 +190,13 @@ local function makePetPattern(id,kind,unique,neon,mega,fly,ride, stacks)
 	if stacks then
 		ageRandom = math.random(1, 2000000)
 	end
+	if neon then
+		neon = true
+		mega = false
+	elseif mega then
+		neon = false
+		mega = true
+	end
 	return {
 		["unique"] = unique,
 		["category"] = "pets",
@@ -417,21 +424,11 @@ local PetsTab = Window:CreateTab({
 })
 PetsTab:Separator({Text = "Spawn Random Pets"})
 PetsTab:Button({
-	Text = "Spawn high tier pets - NFR",
+	Text = "Spawn high tier pets",
 	Callback = function(self)
 		for _,namepet in pairs(petstbl) do
-			for i = 1,math.random(1,5) do
-				createPet(namepet,true,true,true,false,true)
-			end
-		end
-	end,
-})
-PetsTab:Button({
-	Text = "Spawn high tier pets - MFR",
-	Callback = function(self)
-		for _,namepet in pairs(petstbl) do
-			for i = 1,math.random(1,5) do
-				createPet(namepet,true,true,false,true,true)
+			for i = 1,math.random(1,2) do
+				createPet(namepet,math.random(0,1) == 1,math.random(0,1) == 1,math.random(0,1) == 1,math.random(0,1) == 1,true)
 			end
 		end
 	end,
